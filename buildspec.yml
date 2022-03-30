@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+    variables:
+        CACHE_CONTROL: "86400"
+        S3_BUCKET: "{{s3_bucket_url}}"
+        BUILD_FOLDER: "dist"
+        SONAR_TOKEN: "6e5e99adcf09530147b43d586f74aa2f7e0ecfb8"
+phases:
+  install:
+    runtime-versions:
+        nodejs: 12
+    commands:
+        - echo Installing source NPM dependencies...
+        - npm install
+        - npm install -g @angular/cli
+        - npm install -g sonarqube-scanner
+        - sonar-scanner -Dsonar.host.url=https://sonarcloud.io -Dsonar.sources=. -Dsonar.organization=alainhenryt -Dsonar.projectKey=lab-AngularAWS-CICD
+  build:
+    commands:
+        - echo Build started 
+        - ng build --prod
+artifacts:
+    files:
+        - '**/*'
+    type: zip
+    base-directory: 'dist*'
+    discard-paths: yes
