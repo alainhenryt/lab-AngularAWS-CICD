@@ -11,18 +11,33 @@ phases:
     runtime-versions:
         nodejs: 14
     commands:
+        - echo $CODEBUILD_SRC_DIR
         - echo Installing source NPM dependencies...
-        - npm install
+        - npm install -y npm@latest
         - npm install -g @angular/cli
+        - rm package-lock.json
         - npm install -g sonarqube-scanner
         - sonar-scanner -Dsonar.host.url=https://sonarcloud.io -Dsonar.sources=. -Dsonar.organization=alainhenryt -Dsonar.projectKey=lab-AngularAWS-CICD
+  pre_build:
+    commands:
+        - npm install
   build:
     commands:
-        - echo Build started 
+        - echo Build started on 'date'
         - ng build --configuration production
+        - ls -l -F
+  post_build:
+    commands:
+        # Clear S3 bucket.
+        - aws s3 rm s3://${S3_BUCKET} --recursive
+        - echo S3 bucket is cleared.
+        - aws s3 cp dist/lab-AngularAWS-CICD s3://${S3_BUCKET} --recursive
+        - echo Build completed on `date`
 artifacts:
     files:
-        - '**/*'
-    type: zip
-    base-directory: '/'
+        - '/'
     discard-paths: yes
+    base-directory: 'dist*'
+cache:
+paths:
+    - node_modules/
