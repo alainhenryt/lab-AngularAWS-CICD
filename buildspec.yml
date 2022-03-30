@@ -3,7 +3,7 @@ version: 0.2
 env:
     variables:
         CACHE_CONTROL: "86400"
-        S3_BUCKET: "{{s3_bucket_url}}"
+        S3_BUCKET: "weblab-angularappbucket"
         BUILD_FOLDER: "dist"
         SONAR_TOKEN: "6e5e99adcf09530147b43d586f74aa2f7e0ecfb8"
 phases:
@@ -24,7 +24,7 @@ phases:
   build:
     commands:
         - echo Build started on 'date'
-        - ng build --configuration production
+        - ng build
         - ls -l -F
   post_build:
     commands:
