@@ -3,7 +3,7 @@ version: 0.2
 env:
     variables:
         CACHE_CONTROL: "86400"
-        S3_BUCKET: "weblab-angularappbucket"
+        S3_BUCKET: "weblab-s3artifactbucket"
         BUILD_FOLDER: "dist"
         SONAR_TOKEN: "6e5e99adcf09530147b43d586f74aa2f7e0ecfb8"
 phases:
@@ -31,8 +31,8 @@ artifacts:
     files:
         - '**/*'
     type: zip
-    discard-paths: yes
     base-directory: 'dist/'
+    discard-paths: no
 cache:
     paths:
         - node_modules/
