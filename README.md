@@ -50,4 +50,4 @@ https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsRe
 ## Open Codepipline service to creat your pipeline
 1. Create a connection to your github repo & select your repo this codes.
 2. At the level of creating a project, select ubuntu.
-3. At Deployer level of setup, select your s3 bucket created ealier.
+3. At Deploy level of setup, select your s3 bucket created ealier, enable "Extract file before deploy"
