@@ -1,3 +1,5 @@
+# This APPLICATION will only work with an Ubuntu OS. Deploy to s3 bucket.
+# Amazon linux 2 fails to deploy to Elastic Beanstalk
 version: 0.2
 
 env:
