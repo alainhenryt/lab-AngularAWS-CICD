@@ -4,7 +4,7 @@
 
 Clone or download as zip this repo.
 Create a github repo with any name of your choice.
-Edite <lab-AngularAWS-CICD> to your github repo-name in all files that it is present
+Edite "lab-AngularAWS-CICD" to your github repo-name in all files that it is present
 using crt+F(find and replace).
 Now, push that to your github Repo.
 
@@ -44,7 +44,7 @@ https://github.com/alainhenryt
 1. Create an s3 bucket, allow public access, and attched below policy at link:
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsReqd.html
 
-1. Edite the <Bucket-Name> to yours and save.
+1. Edite the "Bucket-Name" to yours and save.
 2. Click on your Bucket-Name, select properties, scroll down the page and enable "Static website hosting"
 
 ## Open Codepipline service to creat your pipeline
